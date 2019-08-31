@@ -26,10 +26,8 @@ curl -X POST \
   -H 'Content-Length: 1447407' \
   -H 'Content-Type: multipart/form-data; boundary=--------------------------303989634438073582793471' \
   -H 'Host: localhost:8080' \
-  -H 'User-Agent: PostmanRuntime/7.16.1' \
   -H 'cache-control: no-cache' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -F file=@/C:/7z1900-x64.exe
+  -F file=@/C:/picture.jpeg
 ```
 
 *Start server*
@@ -45,33 +43,11 @@ The downloaded files will be added to this directory
 
 *Docker*
 
-It is possible to use docker.
-Hand assembly from Dockerfile.
-
-Build the application initially: 
+Ready docker image 
 
 ```
-mvn build
+docker run -d -v {path to shared folder on host}:/usr/src/myapp/shared -p 8080:8080 dmtry/image-sharing-service
 ```
-  
-In the directory where the Dockerfile is located, execute:
-
-```bash
-docker build -t image_server .
-```
-
-Start container
-
-```
-docker run -d -v {path to shared folder on host}:/usr/src/myapp/shared -p 8080:8080 image_server
-```
-
-Or use the ready image from Docker hub
-
-```
-
-```
-
 
 
 
